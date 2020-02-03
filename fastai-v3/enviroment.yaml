@@ -4,12 +4,13 @@ channels:
   - pytorch
   - fastai
 dependencies:
-  - pytorch
+  - pytorch-gpu
   - torchvision
-  - cuda92
+  - pillow=6.1
   - fastprogress
   - fastai
   - jupyter
+  - pip
   - pip:
       - nvidia-ml-py3
       - dataclasses

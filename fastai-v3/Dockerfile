@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.2-base-ubuntu16.04
+FROM nvidia/cuda:10.2-base-ubuntu16.04
 # See http://bugs.python.org/issue19846
 ENV LANG C.UTF-8
 LABEL com.nvidia.volumes.needed="nvidia_driver"
@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
      rm -rf /var/lib/apt/lists/*
 
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
-ENV PYTHON_VERSION=3.6
+ENV PYTHON_VERSION=3.7
 
 RUN curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
      chmod +x ~/miniconda.sh && \
@@ -47,5 +47,6 @@ RUN git clone https://github.com/fastai/course-v3.git
 
 COPY config.yml /root/.fastai/config.yml
 COPY run.sh /run.sh
+COPY jupyter_notebook_config.py /root/.fastai/jupyter_notebook_config.py
 
-CMD ["/run.sh"]
+# ENTRYPOINT ["/run.sh"]
