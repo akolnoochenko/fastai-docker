@@ -24,8 +24,8 @@ Nvidia Drivers (>=10.2)
 
 You can also just run the following without having to build the entire container yourself. This will pull the container from Docker Hub.
 
-`nvidia-docker run -d --name fastai -e JUPYTER_PASSWORD=MyPassword -p 127.0.0.1:8888:8888 --restart always -v $HOME/fastai-data:/storage 
--v /etc/shadow:/etc/shadow:ro -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --shm-size=2gb koppektop/fastai:1.0.1-CUDA10.2-base-1.3.1 /run.sh $USER`
+`docker run --runtime=nvidia -d --name fastai -e JUPYTER_PASSWORD=MyPassword -p 127.0.0.1:8888:8888 --restart always -v $HOME/fastai-data:/storage \
+-v /etc/shadow:/etc/shadow:ro -v /etc/passwd:/etc/passwd:ro -v /etc/group:/etc/group:ro --shm-size=2gb koppektop/fastai:1.0.2-CUDA10.2-base-1.3.1 $USER`
 
 You can use custom password in JUPYTER_PASSWORD environment variable
 

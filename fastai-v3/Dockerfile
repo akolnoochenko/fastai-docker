@@ -33,6 +33,8 @@ ENV USER fastai
 # Create Enviroment
 COPY enviroment.yaml /enviroment.yaml
 RUN conda env create -f enviroment.yaml
+RUN conda update conda
+RUN conda install -c fastai fastai
 
 WORKDIR /notebooks
 # Activate Source
@@ -49,4 +51,4 @@ COPY config.yml /root/.fastai/config.yml
 COPY run.sh /run.sh
 COPY jupyter_notebook_config.py /root/.fastai/jupyter_notebook_config.py
 
-# ENTRYPOINT ["/run.sh"]
+ENTRYPOINT ["/run.sh"]
